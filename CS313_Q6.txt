@@ -1,0 +1,103 @@
+//Jay Mistry
+//23859979
+//Question 6
+
+#include <iostream>
+#include <bits/stdc++.h>
+#include <fstream>
+
+using namespace std;
+
+class Stack {
+
+	public:
+	int top;
+	unsigned cap;
+	char* arr;
+
+};
+
+Stack* createStack(unsigned cap) {  // Creates a stack of given capacity
+
+    Stack* stack = new Stack();
+    stack->cap = cap;
+    stack->top = -1;
+    stack->arr = new char[(stack->cap * sizeof(char))];
+    return stack;
+}
+
+int isFull(Stack* stack) {  // To check if the stack is full
+	
+	return stack->top == stack->cap - 1;
+}
+
+int isEmpty(Stack* stack) { // To check if the stack is empty
+ 
+	return stack->top == -1;
+}
+
+
+void push(Stack* stack, char item) {  // Fuction to add to the stack
+
+    if (isFull(stack))
+		return;
+	stack->arr[++stack->top] = item;
+}	
+
+char pop(Stack* stack) {  // Remove top object in the stack
+
+    if (isEmpty(stack))
+        return -1;
+	
+	return stack->arr[stack->top--];
+}
+
+
+void reverse(string str) {   // Reverses a string
+
+    stack <char> st;
+    for (int i=0; i<str.length(); i++)
+	{
+		if (str[i] != ' ')
+        	st.push(str[i]);
+
+        else
+		{
+			while ( st.empty() == false ) {
+				cout << st.top();
+				st.pop();
+			}
+            cout << " ";
+        }
+  	}
+    while ( st.empty() == false) {
+        cout<< st.top();
+        st.pop();
+    }
+}
+
+
+int main () {
+
+    ifstream iFile;
+    iFile.open("ChuckNorris.txt"); //Opens the file
+    
+    if(iFile == 0) {
+    	cout << "Failed to Open ChuckNorris.txt \n";
+    	return 0;
+    }
+
+    else {
+    	
+        string chucky ;
+        while (getline(iFile,chucky)) {  //Reads every line of the file
+
+			cout << "The Original String: " << chucky << endl <<endl;
+            cout << "The Reversed String: ";
+            reverse(chucky);
+			cout << "\n\n\n" << endl;     
+        }      
+        iFile.close();  //File closes
+    }
+    return 0;
+}

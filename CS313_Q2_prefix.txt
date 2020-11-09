@@ -1,0 +1,65 @@
+//Jay Mistry
+//23859979
+// Q2
+
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+bool op(char c) {
+
+	return isdigit(c); //Checks and returns true if the character is decimal number
+}
+
+double evaluatePrefix (string s) {
+	
+	stack<double> stack; //Creates a stack
+    for (int i = s.size() - 1; i >= 0; i--) {
+		if(op(s[i])) stack.push(s[i] - '0'); 	//Converts the string into Float   
+  
+    	else {
+        
+			double A;
+        	double B;
+			A = stack.top(); //takes element A on top of the stack
+        	stack.pop(); //pops off that top element
+        	B = stack.top(); //takes next element as B 
+        	stack.pop(); // pops off that top element
+
+        	switch(s[i]) { //Using a switch to check different Cases.
+        	
+            	case '+': stack.push(A + B); // Adds A and B
+            		break;
+            		
+            	case '-': stack.push(A - B); // Subtracts A and B and then pushes to the stack
+            		break;
+            		
+            	case '*': stack.push(A * B); // Multiplies A and B and then pushes to the stack
+            		break;
+            		
+            	case '/': // We have two cases for Division
+            	
+            	if(B == 0) // Case 1: If B = 0 then we cant divide
+					cout << "Not Defined";
+            	else
+					stack.push(A / B); // Case 2: If (B=!0), then pushes A/B to the stack
+            	break;
+        	}
+    	}
+    }
+    return stack.top();
+}
+
+int main() {
+	
+	string A = "*/*19*59+49";
+    string B = "+-+27+19*84";
+    string C = "//+2*53*98*22";
+    
+ 	cout << " */*19*59+49   = " << evaluatePrefix(A) << "\n" << endl; 	
+ 	cout << " +-+27+19*84   = " << evaluatePrefix(B) << "\n" << endl;	
+	cout << " //+2*53*98*22 = " << evaluatePrefix(C) << "\n" << endl;
+
+    return 0;
+}
