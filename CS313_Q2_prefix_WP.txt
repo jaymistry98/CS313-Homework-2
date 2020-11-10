@@ -1,0 +1,10 @@
+Q2. Write a prefix stack and show how it works (in main).
+
+WhitePaper:
+
+- So my prefix stack contains two functions i.e op() and evaluatePrefix().
+- op(): It is a bool function which takes a character and returns true if the character is decimal.
+
+- evaluatePrefix(): A function which takes in a string and returns a double. The function first creates                      a stack. Then it converts each element of the string into a double and pushes into                       the stack. Then we take the top and pop off. We again take the top and pop. We then                     let one element be A and other be B. We then use a switch for different cases. At                     the end, we return a double.
+
+- main() : we convert the prefix and get the solution.

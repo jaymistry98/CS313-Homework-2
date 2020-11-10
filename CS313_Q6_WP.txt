@@ -1,0 +1,15 @@
+Q6. Use a stack to pass in a string and reverse each word in the string. For instance, if you have the     string “When Chuck Norris falls in water, Chuck Norris doesn't get wet. Water gets Chuck Norris.” It     should now say, “nehW kcuhC sirroN sllaf ni retaw, …” That is, it should take in one string and be a     function (or multiple functions) that use a stack (or multiple stacks) to reverse each word in the       sentence. Create a text file that you input of Chuck Norris jokes and have the program reverse each      of the jokes.
+
+WhitePaper:
+
+- First, we need to create Stack object i.e Stack Class.
+
+- The Stack class has a Constructor and Functions like isFull(), isEmpty(), push(), pop(), reverse(). 
+	- createStack(), creates a stack of given capacity.
+	- isFull(), checks if the stack is full.
+	- isEmpty(), checks if the stack is empty.
+	- push(), Adds to top of the stack
+	- pop(), Removes the top element of the stack.
+	- reverse(), reverses the given string.
+
+- main() : Opens the given file and reads each line. Then we use while loop to read each line and use            the reverse function to reverse the string. It prints each line in reverse and then we close            the file.
